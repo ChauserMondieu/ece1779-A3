@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Logout Page</title>
+    <link rel="stylesheet" href="/static/Register_Page_success.css" type="text/css">
+</head>
+<body style="background-image: url('/static/graph/background.jpg')">
+    <div class="login-box">
+        <img src={{avatar_address}} class="avatar" alt="Avatar Image">
+              <h1>You are successfully logged out.</h1>
+      <form action="" method="POST">
+            {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                <p class="login-box-msg">{{ msg }}</p>
+            {% endfor %}
+        <p id="line2">Now you could come back to the login page</p>
+          <center>
+           <a href="{{ url_for('login_page')}}">Back to login page</a>
+          </center>
+      </form>
+    </div>
+</body>
+</html>

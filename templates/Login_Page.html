@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/Login_Page.css" />
+</head>
+<body style="background-image: url(/static/graph/background.jpg)">
+    <div class="login-box">
+        <img src="/static/graph/logo.jpg" class="avatar" alt="Avatar Image">
+      <h1>Welcome to Message Forum</h1>
+      <form action="" method="POST">
+            {% for msg in get_flashed_messages() %}
+                <p class="login-box-msg">{{ msg }}</p>
+            {% endfor %}
+        <label for="user_name">Username</label>
+        <input type="text" placeholder="Enter Username" id="user_name" name="user_name">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="password">
+        <input type="submit" value="Log in">
+          <center>
+        <a href="{{ url_for('register_page') }}">Don't have An account?</a>
+          </center>
+      </form>
+    </div>
+</body>
+</html>

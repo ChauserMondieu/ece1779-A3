@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/static/Register_Page.css" type="text/css">
+</head>
+<body style="background-image: url('/static/graph/background.jpg')">
+    <div class="login-box">
+        <img src="/static/graph/register.jpg" class="avatar" alt="Avatar Image">
+              <h1>Welcome !</h1>
+      <form action="" method="POST">
+            {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                <p class="login-box-msg">{{ msg }}</p>
+            {% endfor %}
+        <label for="user_name">set your username</label>
+        <input type="text" placeholder="Enter Username" id="user_name" name="user_name">
+        <label for="password">set your password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="password">
+        <label for="password_confirm">confirm your password</label>
+        <input type="password" placeholder="Enter Password Again" id="password_confirm" name="password_confirm">
+        <input type="submit" value="Commit Register">
+          <center>
+          <a href="{{ url_for('login_page') }}">Back to login page</a>
+          </center>
+      </form>
+    </div>
+</body>
+</html>

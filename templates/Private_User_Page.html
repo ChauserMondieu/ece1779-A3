@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Private zone Template</title>
+		<link type="text/css" rel="stylesheet" href="/static/Private_Page.css">
+	</head>
+	<body style="background-image: url('/static/graph/p_background.jpg')">
+		<div class="top_block">
+			<div class="top_menu">
+                <div class="thumb_info">
+					<div class="imglogo">
+						<img style="width:32px;height:32px;border-radius: 8px;" src= {{avatar_address}} alt="Your logo">
+					</div>
+					<div class="userinfo">
+						{{user_name}}
+					</div>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_setting_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Setting</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('private_all_user_page',
+					user_name=user_name,avatar_address=avatar_address)}}">All Users</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_page',
+					user_name=user_name, avatar_address=avatar_address,messages=messages)}}">Private Page</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('public_page',
+					user_name=user_name,messages=messages)}}">Public Page</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('logout_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Log out</a></span>
+				</div>
+			</div>
+		</div>
+        <div class="wrap">
+            <div class="middle_block">
+                <div class="middle_info">
+                    <div class="middle_img">
+                        <img src={{avatar_address}} alt="Your Avatar">
+                    </div>
+                    <div class="middle_text">
+                        <div class="name">
+                            <span>{{user_name}}</span>
+                        </div>
+                        <div class="some_words">
+                            <span class="some_line">
+                                <p>All the users in this message system are listed below</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_block">
+                <div class="message_box">
+                        <div class="all_message">
+                            <a style="line-height:30px;margin-left:9px;">All Users</a>
+                        </div>
+                </div>
+                <div class="message_context" style="margin-top:0;">
+                    {% for message in range(messages|length) %}
+                    <div class="show_form">
+                        <div class="left_form">
+                            <div class="show_avatar">
+                                <img style="width:50px;height:50px;border-radius: 50%;" src={{avatar_list[message]}} class="avatar" alt="Avatar Image">
+                            </div>
+                            <div class="show_sender">
+                                <p id="p1">
+                                {{ messages[message] }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show_cotent">
+                            <p id="p2">
+                               {{ memo_list[message] }}
+                            </p>
+
+                        </div>
+
+                    </div>
+                        {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+	</body>
+</html>

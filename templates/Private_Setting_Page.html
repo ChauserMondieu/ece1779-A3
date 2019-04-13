@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Private setting page </title>
+		<link type="text/css" rel="stylesheet" href="/static/Private_Setting_Page.css">
+	</head>
+	<body style="background-image: url('/static/graph/p_background.jpg')">
+		<div class="top_block">
+			<div class="top_menu">
+                <div class="thumb_info">
+					<div class="imglogo">
+						<img style="width:32px;height:32px;border-radius: 8px;" src= {{avatar_address}} alt="Your logo">
+					</div>
+					<div class="userinfo">
+						{{user_name}}
+					</div>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_setting_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Setting</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('private_all_user_page',
+					user_name=user_name,avatar_address=avatar_address)}}">All Users</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_page',
+					user_name=user_name,avatar_address=avatar_address,messages=messages)}}">Private Page</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('public_page',
+					user_name=user_name,avatar_address=avatar_address,messages=messages)}}">Public Page</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('logout_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Log out</a></span>
+				</div>
+			</div>
+		</div>
+        <div class="wrap">
+            <div class="middle_block">
+                <div class="middle_info">
+                    <div class="middle_img">
+                        <img src={{avatar_address}} alt="Your Avatar">
+                    </div>
+                    <div class="middle_text">
+                        <div class="name">
+                            <span>{{user_name}}</span>
+                        </div>
+                        <div class="some_words">
+                            <span class="some_line">
+                                <p>Please change your profile information</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_block">
+                <div class="change_submit">
+                    <div class="all_change_related_form">
+                        <form  class="text_change_form" action="/text_change/{{user_name}}" method="POST" >
+                            <div class="error_messages">
+                                {% for msg in get_flashed_messages(category_filter=['one']) %}
+                                <p class="login-box-msg">{{ msg }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="change_old_password">
+                                <label for="old_password" >Please type in your old password:</label>
+                            </div>
+                            <div class="change_typein_old_password">
+                                  <input id="old_password" type="password"
+                                         placeholder="your old password" name="old_password">
+                            </div>
+                            <div class="change_first_password">
+                                <label for="first_password" >Please type in your new password:</label>
+                            </div>
+                            <div class="change_typein_first_password">
+                                  <input id="first_password" type="password"
+                                         placeholder="your new password" name="new_password">
+                            </div>
+                            <div class="change_second_password">
+                                <label for="second_password" >Confirm your new password:</label>
+                            </div>
+                            <div class="change_typein_second_password">
+                                    <input id="second_password" type="password"
+                                           placeholder="password confirmation" name="password_confirm">
+                            </div>
+                            <div class="submit_button">
+                                <input id="text_save_button" type="submit" value="Save change">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="memo_related_form">
+                        <form  class="memo_change_form" action="/memo_change/{{user_name}}" method="POST" >
+                            <div class="error_messages">
+                                {% for msg in get_flashed_messages(category_filter=['three']) %}
+                                <p class="login-box-msg">{{ msg }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="memo_input_message">
+                                <label for="memo_input_form" >Please type in your memo:</label>
+                            </div>
+                            <div class="memo_area">
+                                  <textarea id="memo_input_form" name="memo" style="width: 100%; height: 100px">say something?</textarea>
+                            </div>
+                            <div class="submit_button">
+                                <input id="memo_save_button" type="submit" value="Save change">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="image_related_form">
+                        <form  class="image_change_form" action="/image_change/{{user_name}}" method="POST" enctype="multipart/form-data">
+                            <div class="error_messages">
+                                {% for msg in get_flashed_messages(category_filter=['two']) %}
+                                <p class="login-box-msg">{{ msg }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="change_avatar">
+                                <label for="change_avatar" >Please choose a image for your avatar:</label>
+                            </div>
+                            <div class="change_upload_avatar">
+                                <input id="change_avatar" type="file" name="file_av">
+                            </div>
+                            <div class="change_background">
+                                <label for="change_background" >Please choose a image for your background:</label>
+                            </div>
+                            <div class="change_upload_background">
+                                <input id="change_background" type="file" name="file_bg">
+                            </div>
+                            <div class="submit_button">
+                                <input id="image_save_button" type="submit" value="Save change">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
