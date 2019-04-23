@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+    <style type="text/css">
+        body {
+          margin: 0;
+          padding: 0;
+          background-size: cover;
+          font-family: sans-serif;
+        }
+        .login-box {
+          width: 320px;
+          height: 460px;
+          background: rgba(0%,50%,200%,0.5);
+          color: #fff;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          box-sizing: border-box;
+          border-radius:25px;
+          padding: 70px 30px;
+
+        }
+        .login-box .avatar {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          position: absolute;
+          top: -50px;
+          left: calc(50% - 50px);
+        }
+        .login-box h1 {
+          margin: 0;
+          padding: 0 0 5px;
+          text-align: center;
+          font-size: 22px;
+          color: #ffc107;
+        }
+        .login-box p {
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          font-size: 12px;
+          color: rgba(255%,20%,10%,1);
+        }
+        .login-box label {
+          margin: 0;
+          padding: 0;
+          display: block;
+        }
+        .login-box input {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .login-box input[type="text"], .login-box input[type="password"] {
+          border: none;
+          border-bottom: 1px solid #fff;
+          background: transparent;
+          outline: none;
+          height: 40px;
+          color: rgba(0%,155%,155%,0.8);
+          font-size: 16px;
+        }
+        .login-box input[type="submit"] {
+          border: none;
+          outline: none;
+          height: 40px;
+          background: rgba(250%,20%,100%,0.5);
+          color: #fff;
+          font-size: 18px;
+          border-radius: 20px;
+        }
+        .login-box input[type="submit"]:hover {
+          cursor: pointer;
+          background: rgba(155%,50%,200%,0.5);
+          color: #fff;
+        }
+        .login-box a {
+          font-size: 12px;
+          line-height: 20px;
+          color: #ffc107;
+          text-align: center;
+        }
+        .login-box a:hover {
+          color: #fff;
+          text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('https://s3.amazonaws.com/ece1779avatars/Public/background.jpg')">
+    <div class="login-box">
+        <img src="https://s3.amazonaws.com/ece1779avatars/Public/register.jpg" class="avatar" alt="Avatar Image">
+              <h1>Welcome !</h1>
+      <form action="" method="POST">
+            {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                <p class="login-box-msg">{{ msg }}</p>
+            {% endfor %}
+        <label for="user_name">set your username</label>
+        <input type="text" placeholder="Enter Username" id="user_name" name="user_name">
+        <label for="password">set your password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="password">
+        <label for="password_confirm">confirm your password</label>
+        <input type="password" placeholder="Enter Password Again" id="password_confirm" name="password_confirm">
+        <input type="submit" value="Commit Register">
+        <center>
+          <a href="{{ url_for('login_page') }}">Back to login page</a>
+        </center>
+      </form>
+    </div>
+</body>
+</html>

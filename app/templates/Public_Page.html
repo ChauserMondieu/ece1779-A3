@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Public zone</title>
+        <style type="text/css">
+            body{margin:0;background-repeat: repeat;}
+            .top_block{width:100%;height:40px;background-color: rgba(175, 154, 255, 0.9);margin:0 auto;position:fixed;z-index:100;}
+	        .top_menu{display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: flex-start;align-items: center;align-content: center;
+		        width:1046px;height:40px;margin:0 auto;}
+		    .thumb_info{display: flex;flex-direction:row;flex-wrap: nowrap;justify-content: flex-start;align-content: center;align-items: center;
+			    cursor: pointer;height:40px;width:120px;}
+			.imglogo{height: 48px;width: 48px;border-radius:8px;margin-top:4px;cursor: pointer;}
+			.userinfo{height: 40px;width: 100px;color: rgba(244, 238, 40, 0.9);margin-top:4px; cursor: pointer;
+			    font-weight:800;font-size:18px}
+		    .function_button{width:125px;height:41px;font-size:16px;float:left;margin-top:8px;}
+		    .top_menu span{font-size:16px;color: rgba(244, 238, 40, 0.9);cursor: pointer;margin-left:31px;}
+            .wrap{display:flex;flex-wrap:nowrap;flex-direction:column;justify-content:flex-start;}
+            .middle_block{width:60%;height:268px;margin-top: 20px;float:left;margin-left:100px;
+	            background-color: rgba(62, 14, 120, 0.2);}
+	        .middle_info{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;
+		        align-items:center;align-content:center;width:100%;height:180px;margin-top:40px;
+		        margin-left:20px;float:left;}
+            .middle_img img{max-width:120px;max-height:120px;border-radius:24px;margin:4px;}
+		    .middle_text{display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:flex-start;align-content:center;
+                width:60%;height:150px;margin-left:25px;float:left;}
+			.some_words{display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: flex-start;align-items: center;align-content: center;
+                width:100%;height:100px;float:left;line-height:20px;}
+            .some_line{width:90%;height:40px;line-height:20px;font-size:18px;color: #d9d324;float:left}
+			.name{width:100%;height:50px;float:left;font-weight:800;font-size:48px;color: #d4bb19;}
+            .bottom_block{width:60%;height:900px;margin-left:100px;background-color: rgba(62, 14, 120, 0.7);float:left}
+	        .text_submit{width:100%;height:260px;float:left;}
+		    .text_form{display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:center;text-align:center;
+		        align-items:center;align-content:center;width:90%;height:220px; margin:20px 20px;border-radius:12px;
+                border: 1px solid rgb(166, 176, 147);}
+			.text_input_message{width:100%;height:24px;margin-top:8px;font-size:18px;color:#ccc;}
+			.text_area{width:80%; height: 120px}
+			.submit_button{width:100%;height:30px;margin-top:8px;font-size:18px;}
+            .text_submit input[type="submit"] {border: none;outline: none;height: 20px;background: rgba(250%,20%,100%,0.5);
+					color: #fff;font-size: 12px;border-radius: 10px;}
+            .text_submit input[type="submit"]:hover {cursor: pointer;background: rgba(155%,50%,200%,0.5);color: #fff;}
+			.error_messages{width:100%;height:15px;font-size:14px;}
+            .error_messages p {font-size: 12px;color: #ff2f33;text-align: center;}
+	        .message_box{width:100%;height:45px;float:left;background-color: #3b2f61;margin-top:13px;border:0.5px solid #2e244f;}
+	        .all_message{width:100%;height:100%;float:left;color: #ccc7d9;font-weight: 700;font-size:14px;line-height:35px;margin-top:5px;}
+	        .message_context{display:flex;flex-wrap:nowrap;flex-direction:column;justify-content:flex-start;
+		        width:100%;background-color: #3b2f61;margin-top:13px;float:left;}
+		    .show_form{display:flex;flex-wrap:nowrap;flex-direction:row;justify-content:flex-start;
+		        width:96%;height:200px;background-color: #3b2f61;border: 1px solid rgb(166, 176, 147);
+			    margin-top:13px;float:left;border-radius:12px;margin-left:2%;margin-right:2%;}
+			.left_form{display:flex;flex-wrap:nowrap;flex-direction:column;justify-content:flex-start;
+			    width:16%;height:80%;margin:8% 2% 0 2%;}
+            .show_avatar{width:100%;height:40%;border-radius: 50%;text-align:center;}
+            .show_sender{width:100%;height:20%;margin-top:4%;text-align:center;}
+            .show_form #p1{font-size:18px;font-weight:600;color:rgb(255%,255%,255%);}
+			.show_cotent{width:75%;height:80%;font-size:16px;margin-top:2%;background-color:#ccc7d9;padding:5px 10px;border-radius:12px;}
+            .show_form #p2{font-size:18px;font-weight:600;color: rgb(142, 16, 255);}
+        </style>
+	</head>
+	<body style="background-image: url('https://s3.amazonaws.com/ece1779avatars/Public/p_background.jpg');">
+		<div class="top_block">
+			<div class="top_menu">
+                <div class="thumb_info">
+					<div class="imglogo">
+						<img style="width:32px;height:32px;border-radius: 8px;" src={{avatar_address}} alt="Your logo">
+					</div>
+					<div class="userinfo">
+						{{user_name}}
+					</div>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_setting_text_change_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Pw Setting</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_setting_memo_change_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Mm Setting</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_setting_image_change_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Av Setting</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('private_all_user_page',
+					user_name=user_name,avatar_address=avatar_address)}}">All Users</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('private_page',
+					user_name=user_name,avatar_address=avatar_address,messages=messages)}}">Private Page</a></span>
+				</div>
+				<div class="function_button" >
+					<span><a href="{{url_for('public_page',
+					user_name=user_name,avatar_address=avatar_address,messages=messages)}}">Public Page</a></span>
+				</div>
+                <div class="function_button" >
+					<span><a href="{{url_for('logout_page',
+					user_name=user_name,avatar_address=avatar_address)}}">Log out</a></span>
+				</div>
+			</div>
+		</div>
+        <div class="wrap">
+            <div class="middle_block">
+                <div class="middle_info">
+                    <div class="middle_img">
+                        <img src={{avatar_address}} alt="Your Avatar">
+                    </div>
+                    <div class="middle_text">
+                        <div class="name">
+                            <span>{{user_name}}</span>
+                        </div>
+                        <div class="some_words">
+                            <span class="some_line">
+                                <p>This is the public page, all the messages sent by users will be posted in here.
+                            <br>Feel free to post your own messages!</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_block">
+                <div class="text_submit">
+                    <form  class="text_form" action="" method="POST">
+                        <div class="text_input_message">
+                            <label for="text_input_form" >Please type in somthing here:</label>
+                        </div>
+                        <div class="text_area">
+                              <textarea id="text_input_form" name="public_message" style="width: 100%; height: 100px">say something?</textarea>
+                        </div>
+                        <div class="submit_button">
+                            <input type="submit" value="Post it!">
+                        </div>
+                        <div class="error_messages">
+                            {% for msg in get_flashed_messages() %}
+                            <p class="login-box-msg">{{ msg }}</p>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+                <div class="message_box">
+                        <div class="all_message">
+                            <a style="line-height:30px;margin-left:9px;">All Message</a>
+                        </div>
+                </div>
+                <div class="message_context" style="margin-top:0;">
+                    {% for message in messages %}
+                    <div class="show_form">
+                        <div class="left_form">
+                            <div class="show_avatar">
+                                <img style="width:50px;height:50px;border-radius: 50%;" src={{message['SS'][1].split(".",1)[1]}} class="avatar" alt="Avatar Image">
+                            </div>
+                            <div class="show_sender">
+                                <p id="p1">
+                                {{ message['SS'][0].split(".",1)[1] }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show_cotent">
+                            <p id="p2">
+                               {{ message['SS'][2].split(".",1)[1] }}
+                            </p>
+                        </div>
+                    </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
